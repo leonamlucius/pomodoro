@@ -1,5 +1,13 @@
 import time
+from pygame import mixer
 
+def music():
+
+    mixer.init()
+
+    engagedSound = mixer.Sound("beep.mp3")
+
+    mixer.Sound.play(engagedSound)
 
 def timer(num):
 
@@ -16,6 +24,7 @@ def timer(num):
 
 
     print('Tempo encerrado!')
+    music()
 
     yesOrNo = input('\nDeseja começar outro pomodoro? Y/N: ' )
 

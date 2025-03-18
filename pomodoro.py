@@ -1,4 +1,8 @@
 import time
+
+from os import environ
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+
 from pygame import mixer
 
 def music():
@@ -37,19 +41,36 @@ def timer(num):
 
 def selection():
 
+    custom = False
+
+    chosen = int(input('\nDigite 1 para o modo padrão ou 2 para ou modo customizável:'))
+    
+    if chosen == 2:
+        custom = True
+
     print('\n10-15-30-45')
 
     num = int(input('\nDigite a quantidade de minutos que deseja o Pomodoro: '))
 
+    
     if num <= 0:
-        print("O valor não pode ser zero!")
+        print("\nO valor não pode ser zero!")
 
         selection()
+
+    if custom == False:
+        if num != 10 or num != 15 or num != 30 or num!= 45:
+
+            print("\nO valor não suportado, escolha os valores apresentados!")
+
+            selection()
 
     try: 
         timer(num)
     except Exception:
         print('ERRO! ')
+    except KeyboardInterrupt:
+        print('\n---Programa encerrado!---')
 
 
 if __name__ == "__main__":
@@ -64,3 +85,4 @@ if __name__ == "__main__":
         print('\n---Programa encerrado!---')
 
     
+

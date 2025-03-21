@@ -5,6 +5,17 @@ environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 
 from pygame import mixer
 
+
+class Laps:
+    def __init__(self, laps):
+
+        self.laps = laps
+
+    def __str__(self):
+
+        return f'Ciclos: {self.laps}'
+
+         
 def music():
 
     mixer.init()
@@ -35,6 +46,11 @@ def timer(num):
 
     if yesOrNo == "Y" or yesOrNo == "y":
 
+        test = True        
+        
+        res = Laps(1)
+        print(res)
+
         selection()
 
     
@@ -43,11 +59,13 @@ def selection():
 
     custom = False
 
+
     chosen = int(input('\nDigite 1 para o modo padrão ou 2 para ou modo customizável:'))
     
     if chosen == 2:
         custom = True
 
+    
     print('\n10-15-30-45')
 
     num = int(input('\nDigite a quantidade de minutos que deseja o Pomodoro: '))
